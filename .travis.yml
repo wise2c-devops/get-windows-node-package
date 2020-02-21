@@ -1,0 +1,26 @@
+language: bash
+
+os:
+  - windows
+  - linux
+
+services:
+- docker
+
+jobs:
+  include:
+    - os: linux
+      dist: centos
+      script:
+      - >
+      - sed -i "s#RELEASE_VERSION#${TRAVIS_BRANCH}#g" Dockerfile-Linux
+      - docker build -f Dockerfile-Linux -t wise2c/kubernetes-node-windows-amd64:${TRAVIS_BRANCH} .
+      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - docker push wise2c/kubernetes-node-windows-amd64:${TRAVIS_BRANCH}
+    - os: windows
+      script:
+      - >
+      - sed -i "s#RELEASE_VERSION#${TRAVIS_BRANCH}#g" Dockerfile-Windows
+      - docker build -f Dockerfile-Windows -t wise2c/kubernetes-node-windows-amd64-1809:${TRAVIS_BRANCH} .
+      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - docker push wise2c/kubernetes-node-windows-amd64-1809:${TRAVIS_BRANCH}

@@ -1,0 +1,2 @@
+FROM alpine
+RUN wget -O /kubernetes-node-windows-amd64.tar.gz https://dl.k8s.io/RELEASE_VERSION/kubernetes-node-windows-amd64.tar.gz
