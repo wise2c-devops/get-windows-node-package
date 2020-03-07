@@ -1,4 +1,4 @@
 FROM mcr.microsoft.com/windows/nanoserver:1809
-RUN curl -L -o C:\ProgramData\kubernetes-node-windows-amd64.tar.gz https://dl.k8s.io/RELEASE_VERSION/kubernetes-node-windows-amd64.tar.gz
+RUN curl -L -o C:\ProgramData\kubernetes-node-windows-amd64.tar.gz https://dl.k8s.io/v1.15.10/kubernetes-node-windows-amd64.tar.gz
 RUN curl -L -o C:\ProgramData\flannel-windows-amd64.tar.gz https://github.com/coreos/flannel/releases/download/v0.11.0/flannel-v0.11.0-windows-amd64.tar.gz 
 RUN curl -L -o C:\ProgramData\cni-plugins-windows-amd64.tgz https://github.com/containernetworking/plugins/releases/download/v0.8.5/cni-plugins-windows-amd64-v0.8.5.tgz 
